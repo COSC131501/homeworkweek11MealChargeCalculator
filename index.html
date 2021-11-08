@@ -1,0 +1,148 @@
+<!Doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <title>Meal Charge Calculator</title>
+<style>
+
+    body{
+        background: linear-gradient(to right, green 0%, rgb(102, 201, 102) 100%);
+        color: white;
+    }
+    img {
+        width: 450px;
+        height: auto;
+    }
+    .tableclass {
+        border: solid white 5px;
+    }
+</style>
+  </head>
+  <body>
+
+    <table class="tableclass">
+
+    <tr>
+
+    <td>
+
+<h1>Meal Charge Calculator</h1>
+<p>Calculate total meal cost. Tax is 8.25% of meal cost. 
+   Tip is 15% of meal cost.<br> Total meal cost is equal to 
+   the meal cost plus tax and plus the tip.
+</p>
+
+<table>
+<tr>
+<h4 style="height: 0px;">Enter Meal Cost</h4>
+<input type="text" style="margin-left: 150px;" style="height: -10px;" placeholder=" " id="valbox"></input>
+<td id="display"></td>
+
+<td>
+
+<form name="theform">
+
+<table>
+<h2>Description Price</h2>
+<tr>
+<td>Meal Cost:</td>
+<td><input name="milesDrivenfm" size="10"><br></td>
+</tr>
+<tr>
+ <td>Tax: (8.25%)</td>
+ <td><input name="costPerGallonfm" size="10"><br></td>
+</tr>
+<tr>
+ <td>Tip:(15%)</td>
+ <td><input name="averageMilesPerGallonfm" size="10"><br></td>
+</tr>
+<tr>
+ <td>Total:</td>
+ <td><input name="totalfm" size="10"><br></td>
+</tr>
+<tr>
+ <td colspan="2"><input type="button" name="calc" value="Calculate" onClick="calculate();">
+ <input type="button" name="clear" value="Clear" onClick="clearinfo();"></td>
+</tr>
+</table>
+
+</form>
+
+</td>
+
+</tr>
+
+</table>
+
+<script>
+
+    //declare the calculate function
+    function calculate() {
+        // declare the variables
+        var milesDriven; // miles driven per day
+        var costPerGallon; // cost per gallon of gas
+        var averageMilesPerGallon; // average miles per gallon of gas
+        var parking; // parking fees per day
+        var total; //total cost
+
+        // Get the values from the text fields
+        milesDriven = parseInt(document.theform.milesDrivenfm.value);
+        costPerGallon = parseFloat(document.theform.costPerGallonfm.value);
+        averageMilesPerGallon = parseInt(document.theform.averageMilesPerGallonfm.value);
+        parkingFees = parseFloat(document.theform.parkingFeesfm.value);
+        tolls = parseFloat(document.theform.totalfm.value);
+
+        // Calculate and display daily driving cost
+        total = parseFloat(costPerGallon * milesDriven / averageMilesPerGallon + parkingFees);
+        
+        document.querySelector('totalfm').innerHTML = "$ " + total.toFixed(2);
+    }
+
+    function clearinfo() {
+        document.theform.milesDrivenfm.value = " ";
+        document.theform.costPerGallonfm.value = " ";
+        document.theform.averageMilesPerGallonfm.value = " ";
+        document.theform.parkingFeesfm.value = " ";
+        document.theform.totalfm.value = " ";
+
+
+        document.getElementById("totalfm").innerHTML = " ";
+        document.theform.milesDrivenfm.focus();
+    }
+     
+    function getImages() {
+
+        document.theform.milesDrivenfm.focus();
+
+        // Create the images array
+        images = new Array(5);
+        // get the element by ID
+        display = document.getElementById("display");
+        //Initialize the array wiyh images
+        images[0] = "<img src='fancy.jpg' alt='image of car'>";
+        images[1] = "<img src='fancy1.jpg' alt='image of car1'>";
+        images[2] = "<img src='fancy2.jpg' alt='image of car2'>";
+        images[3] = "<img src='fancy3.jpg' alt='image of car3'>";
+        images[4] = "<img src='fancy4.jpg' alt='image of car4'>";
+
+        // get a random index into the arrays
+        i = Math.floor(Math.random() * images.length);
+
+        //Display the image to the page
+        display.innerHTML = images[i];
+    }
+
+        getImages();
+
+
+</script>
+</td>
+</tr>
+</table>
+
+  </body><br><br><br>
+
+<a href="http://csnet.southtexascollege.edu/localuser/jflor118/">Go Back To Homepage: Juan L. Flores</a>
+
+</html>
